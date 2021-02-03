@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JSON</h1>
+    <h2>JavaScript Object Notation</h2>
+    <ul id="user-container">
+
+    </ul>
+
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/comments')
+            .then(response => response.json())
+            .then(json => displayUser(json))
+            .catch(error => console.error())
+
+            function displayUser(user){
+                const ul = document.getElementById('user-container');
+                const userEmail = user.map(user => user.email);
+
+                // for(let i=0; i<userEmail.length; i++){
+                //     const user = userEmail[i];
+                //     const li = document.createElement('li');
+                //     li.innerText = user;
+                //     ul.appendChild(li);
+                // }
+                const setUserEmail = userEmail.map(u => {
+                    const li = document.createElement('li');
+                    li.innerText = u;
+                    ul.appendChild(li);
+                }) //map er bitor() arrow fun likhte hoi..map a 1ta parameter take jeta te loop kre data push kra hoi
+       
+            }
+    </script>
+</body>
+
+</html>
+
+<!-- http request get,post,put(delete/just kono kicu rakhle -->
